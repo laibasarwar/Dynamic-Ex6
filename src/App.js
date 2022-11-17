@@ -3,10 +3,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./App.css";
+import React from "react";
+
 import CreateUserPage from "./pages/CreateUser";
 import LoginPage from "./pages/Login";
 import UserProfilePage from "./pages/UserProfile";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDUxTjaE8fLD1woMlMnPBUbiIlmSql2caA",
@@ -16,21 +18,6 @@ const firebaseConfig = {
   messagingSenderId: "906927206491",
   appId: "1:906927206491:web:4d3e5b137528a4cb220f7e",
 };
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <UserProfilePage />,
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/create",
-    element: <CreateUserPage />,
-  },
-]);
 
 function App() {
   const [appInitialized, setAppInitialized] = useState(false);
@@ -58,9 +45,36 @@ function App() {
       });
     }
   }, [appInitialized]);
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <UserProfilePage
+          isLoading={isLoading}
+          isLoggedIn={isLoggedIn}
+          userInformation={userInformation}
+        />
+      ),
+    },
+    {
+      path: "/login",
+      element: <LoginPage isLoggedIn={isLoggedIn} />,
+    },
+    {
+      path: "/create",
+      element: (
+        <CreateUserPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setUserInformation={setUserInformation}
+        />
+      ),
+    },
+  ]);
+
   return (
     <div className="App">
-      <Header />
       <RouterProvider router={router} />
     </div>
   );
