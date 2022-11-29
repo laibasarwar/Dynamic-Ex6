@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
 import Header from "../components/Header";
 
-function UserProfilePage({ isLoading, isLoggedIn, userInformation }) {
+function UserProfilePage({
+  isLoading,
+  isLoggedIn,
+  userInformation,
+  setIsLoggedIn,
+  setUserInformation,
+}) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -11,7 +17,11 @@ function UserProfilePage({ isLoading, isLoggedIn, userInformation }) {
 
   return (
     <>
-      <Header />
+      <Header
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        setUserInformation={setUserInformation}
+      />
       <div className="PageWrapper">
         <h1>User Profile</h1>
         <p>

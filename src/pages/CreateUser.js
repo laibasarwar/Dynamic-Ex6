@@ -12,6 +12,11 @@ function CreateUserPage({ setIsLoggedIn, setUserInformation, isLoggedIn }) {
     if (isLoggedIn) navigate("/");
   }, [isLoggedIn]);
 
+  const loginUser = useCallback((e) => {
+    e.preventDefault();
+    console.log(e);
+  }, []);
+
   const signUpUser = useCallback(
     (e) => {
       e.preventDefault();
@@ -46,7 +51,11 @@ function CreateUserPage({ setIsLoggedIn, setUserInformation, isLoggedIn }) {
   );
   return (
     <>
-      <Header />
+      <Header
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
+        setUserInformation={setUserInformation}
+      />
       <div className="PageWrapper">
         <h1>Create User</h1>
         <CreateUserForm signUpUser={signUpUser} />

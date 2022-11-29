@@ -1,15 +1,15 @@
 import React from "react";
 
-function LoginForm() {
+function LoginForm(loginUser) {
   return (
-    <form className="FormElement">
-      <label htmlFor="userName">UserName</label>
-      <input type="texts" name="UserName" />
+    <form className="FormElement" onSubmit={(e) => loginUser(e)}>
+      <label htmlFor="email">User Email</label>
+      <input type="texts" name="email" />
 
-      <label htmlFor="userPassword">Password</label>
-      <input type="texts" name="Password" />
+      <label htmlFor="password">Password</label>
+      <input type="password" name="password" />
 
-      <button type="submit">submit</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }

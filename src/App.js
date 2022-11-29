@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { initializeApp } from "firebase/app";
+
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./App.css";
 import React from "react";
@@ -54,12 +55,20 @@ function App() {
           isLoading={isLoading}
           isLoggedIn={isLoggedIn}
           userInformation={userInformation}
+          setIsLoggedIn={setIsLoggedIn}
+          setUserInformation={setUserInformation}
         />
       ),
     },
     {
       path: "/login",
-      element: <LoginPage isLoggedIn={isLoggedIn} />,
+      element: (
+        <LoginPage
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          setUserInformation={setUserInformation}
+        />
+      ),
     },
     {
       path: "/create",

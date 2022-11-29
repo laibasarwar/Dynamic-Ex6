@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getAuth } from "firebase/auth";
-import { signOut } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 
-function Header(setIsLoggedIn, setUserInformation) {
+function Header(setIsLoggedIn, setUserInformation, isLoggedIn) {
   function logout() {
     const auth = getAuth();
     signOut(auth)
@@ -18,16 +17,22 @@ function Header(setIsLoggedIn, setUserInformation) {
 
   return (
     <nav>
-      <Link to="/">
-        <p>Home</p>
-      </Link>
-      <Link to="/login">
-        <p>Login</p>
-      </Link>
-      <Link to="/create">
-        <p>CreateUser</p>
-      </Link>
-      <p onClick={() => logout()}>Log Out</p>
+      {isLoggedIn && (
+        <Link to="/">
+          <p>Home</p>
+        </Link>
+      )}
+      {!isLoggedIn && (
+        <Link to="/login">
+          <p>Login</p>
+        </Link>
+      )}
+      {!isLoggedIn && (
+        <Link to="/create">
+          <p>CreateUser</p>
+        </Link>
+      )}
+      {isLoggedIn && <p onClick={() => logout()}>Log Out</p>}
     </nav>
   );
 }
