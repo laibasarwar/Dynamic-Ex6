@@ -10,12 +10,7 @@ function CreateUserPage({ setIsLoggedIn, setUserInformation, isLoggedIn }) {
 
   useEffect(() => {
     if (isLoggedIn) navigate("/");
-  }, [isLoggedIn]);
-
-  const loginUser = useCallback((e) => {
-    e.preventDefault();
-    console.log(e);
-  }, []);
+  }, [isLoggedIn, navigate]);
 
   const signUpUser = useCallback(
     (e) => {

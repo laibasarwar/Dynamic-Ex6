@@ -19,14 +19,13 @@ function LoginPage({ isLoggedIn, setIsLoggedIn, setUserInformation }) {
       const email = e.currentTarget.email.value;
       const password = e.currentTarget.password.value;
 
-      console.log({ email, password });
+      console.log(email, password);
 
       const auth = getAuth();
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
           setIsLoggedIn(true);
-
           setUserInformation({
             email: user.email,
             displayName: user.displayName,
