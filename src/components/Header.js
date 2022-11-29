@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
-function Header(setIsLoggedIn, setUserInformation, isLoggedIn) {
+function Header({ setIsLoggedIn, setUserInformation, isLoggedIn }) {
   function logout() {
     const auth = getAuth();
     signOut(auth)

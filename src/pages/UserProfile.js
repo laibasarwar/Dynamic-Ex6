@@ -33,8 +33,8 @@ function UserProfilePage({
           {userInformation.email}
         </p>
         <p>
-          <strong>Display Name: </strong>
-          {userInformation.displayName}
+          <strong>UID: </strong>
+          {userInformation.uid}
         </p>
       </div>
     </>

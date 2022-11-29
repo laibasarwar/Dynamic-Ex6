@@ -1,6 +1,6 @@
 import React from "react";
 
-function LoginForm(loginUser) {
+function LoginForm({ loginUser }) {
   return (
     <form className="FormElement" onSubmit={(e) => loginUser(e)}>
       <label htmlFor="email">User Email</label>
